@@ -37,9 +37,9 @@ namespace Ecommerce.Repository
             return detallePedido;
         }
 
-        public async Task<DetallePedido> GetByIdAsync(int id)
+        public async Task<DetallePedido> FindByIdAsync(int id)
         {
-            var detallePedido = await _aplicationDbContext.DetallePedido.FirstOrDefaultAsync(u => u.Id == id);
+            var detallePedido = await _aplicationDbContext.DetallePedido.FindAsync(id);
             return detallePedido;
         }
 

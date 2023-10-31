@@ -12,7 +12,7 @@ namespace Ecommerce.Repository.Interfaces
         void Update<Carrito>(Carrito carrito);
         void Delete<Carrito>(Carrito carrito);
         Task<IEnumerable<Carrito>> GetAllAsync();
-        Task<Carrito> GetByIdAsync(int id);
+        Task<Carrito> FindByIdAsync(int id);
         Task<bool> SaveChangesAsync();
     }
 }

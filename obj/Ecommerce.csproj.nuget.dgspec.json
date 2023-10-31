@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\Ecommerce.csproj": {}
+    "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\Ecommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\Ecommerce.csproj": {
+    "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\Ecommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\Ecommerce.csproj",
+        "projectUniqueName": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\Ecommerce.csproj",
         "projectName": "Ecommerce",
-        "projectPath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\Ecommerce.csproj",
+        "projectPath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\Ecommerce.csproj",
         "packagesPath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\obj\\",
+        "outputPath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TEMP.LAPTOP-NIU003TV\\AppData\\Roaming\\NuGet\\NuGet.Config",

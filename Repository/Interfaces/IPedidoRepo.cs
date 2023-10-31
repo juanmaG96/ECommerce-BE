@@ -12,7 +12,7 @@ namespace Ecommerce.Repository.Interfaces
         void Update<Pedido>(Pedido usuario);
         void Delete<Pedido>(Pedido usuario);
         Task<IEnumerable<Pedido>> GetAllAsync();
-        Task<Pedido> GetByIdAsync(int id);
+        Task<Pedido> FindByIdAsync(int id);
         Task<bool> SaveChangesAsync();
     }
 }

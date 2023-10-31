@@ -37,9 +37,9 @@ namespace Ecommerce.Repository
             return carritos;
         }
 
-        public async Task<Carrito> GetByIdAsync(int id)
+        public async Task<Carrito> FindByIdAsync(int id)
         {
-            var carrito = await _aplicationDbContext.Carrito.FirstOrDefaultAsync(u => u.Id == id);
+            var carrito = await _aplicationDbContext.Carrito.FindAsync(id);
             return carrito;
         }
 

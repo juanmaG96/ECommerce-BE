@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Services;
+using Ecommerce.Services.Interfaces;
 
 namespace Ecommerce
 {
@@ -41,6 +43,8 @@ namespace Ecommerce
             services.AddScoped<IDetallePedidoRepo, DetallePedidoRepository>();
 
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+
+            services.AddScoped<IPedidoService, PedidoService>();
 
             services.AddSwaggerGen(c =>
             {

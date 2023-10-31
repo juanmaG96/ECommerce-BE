@@ -37,9 +37,9 @@ namespace Ecommerce.Repository
             return productos;
         }
 
-        public async Task<Producto> GetByIdAsync(int id)
+        public async Task<Producto> FindByIdAsync(int id)
         {
-            var producto = await _aplicationDbContext.Producto.FirstOrDefaultAsync(u => u.Id == id);
+            var producto = await _aplicationDbContext.Producto.FindAsync(id);
             return producto;
         }
 

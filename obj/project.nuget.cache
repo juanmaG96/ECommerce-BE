@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tf+fRNCIbphUU79/Zs2dd/dtuZmnHJ174n6dHlYlBkdLLfqrIzJ3XMndMEgAZENRmcGeYjpDaVQnheO3XiaARw==",
+  "dgSpecHash": "+kt2+1S65EOfpcLqDeW7UBhCQVwCUWxLmLiTLoTIwqTu9Xrh4FoGLvCGCmb2WqZxSjiH2WYjl06l7/Vw/MHhvA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\Desktop\\juan\\dotnet\\Ecommerce\\Ecommerce.csproj",
+  "projectFilePath": "C:\\Users\\TEMP.LAPTOP-NIU003TV\\source\\repos\\Ecommerce\\Ecommerce.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TEMP.LAPTOP-NIU003TV\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\TEMP.LAPTOP-NIU003TV\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

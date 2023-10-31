@@ -11,5 +11,12 @@ namespace Ecommerce.DTOs
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
         public decimal Total { get; set; }
+        public int IdUsuario { get; set; }
+        public ICollection<DetallePedidoDto> DetallePedidosDto { get; set; }
+
+        public PedidoDto()
+        {
+            DetallePedidosDto = new HashSet<DetallePedidoDto>();
+        }
     }
 }
