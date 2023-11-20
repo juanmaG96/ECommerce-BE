@@ -43,6 +43,13 @@ namespace Ecommerce.Repository
             return usuario;
         }
 
+        public async Task<Usuario> FindByCorreoElectronico(string email)
+        {
+            var usuario = await _aplicationDbContext.Usuario.FirstOrDefaultAsync(u => u.CorreoElectronico == email);
+            return usuario;
+            
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             // Guardar los cambios en la base de datos

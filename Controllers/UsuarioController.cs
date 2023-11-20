@@ -4,6 +4,7 @@ using Ecommerce.Models;
 using Ecommerce.Repository;
 using Ecommerce.Repository.Interfaces;
 using Ecommerce.Services.Interfaces;
+using Ecommerce.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -76,6 +77,8 @@ namespace Ecommerce.Controllers
         {
             try
             {
+                usuarioDto.Contraseña = Encrypt.GetSHA256(usuarioDto.Contraseña);   //encripta la contraseña
+
                 var usuarioNuevo = _mapper.Map<Usuario>(usuarioDto);
 
                 _uRepository.Add(usuarioNuevo);
@@ -105,7 +108,7 @@ namespace Ecommerce.Controllers
                 if (usuario == null)
                     return BadRequest();
 
-                //usuarioDto.Id = usuario.Id;
+                usuarioDto.Contraseña = Encrypt.GetSHA256(usuarioDto.Contraseña);   //encripta la contraseña
 
                 _mapper.Map(usuarioDto, usuario);
 

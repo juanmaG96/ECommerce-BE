@@ -18,6 +18,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ecommerce.Services;
 using Ecommerce.Services.Interfaces;
+using Ecommerce.Models.Common;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Ecommerce
 {
@@ -35,16 +39,43 @@ namespace Ecommerce
         {
 
             services.AddControllers();
-            // Config por Inyecciones de dependencia para repo y mapper
+            // Config por Inyecciones de dependencia para repo, services y mapper
             services.AddScoped<IUsuarioRepo, UsuarioRepository>();
             services.AddScoped<IPedidoRepo, PedidoRepository>();
             services.AddScoped<IProductoRepo, ProductoRepository>();
             services.AddScoped<ICarritoRepo, CarritoRepository>();
             services.AddScoped<IDetallePedidoRepo, DetallePedidoRepository>();
 
+            services.AddScoped<IPedidoService, PedidoService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
-            services.AddScoped<IPedidoService, PedidoService>();
+
+            // config clase appSetting secreto para jwt
+            var appSettingSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingSection);
+
+            // jwt
+            var appSettings = appSettingSection.Get<AppSettings>();
+            var llave = Encoding.ASCII.GetBytes(appSettings.Secreto);
+            services.AddAuthentication(d =>
+            {
+                d.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                d.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(d =>
+                {
+                    d.RequireHttpsMetadata = false;
+                    d.SaveToken = true;
+                    d.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(llave),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
             services.AddSwaggerGen(c =>
             {
@@ -78,6 +109,9 @@ namespace Ecommerce
             }
 
             app.UseCors("CorsPolicy");
+
+            // por jwt
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 

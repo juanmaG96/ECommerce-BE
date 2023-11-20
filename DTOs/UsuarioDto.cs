@@ -13,6 +13,6 @@ namespace Ecommerce.DTOs
         public int Dni { get; set; }
         public long Telefono { get; set; }
         public string CorreoElectronico { get; set; }
-        // public string Contraseña { get; set; }
+        public string Contraseña { get; set; }
     }
 }

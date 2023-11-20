@@ -13,6 +13,7 @@ namespace Ecommerce.Repository.Interfaces
         void Delete<Usuario>(Usuario usuario);
         Task<IEnumerable<Usuario>> GetAllAsync();
         Task<Usuario> FindByIdAsync(int id);
+        Task<Usuario> FindByCorreoElectronico(string email);
         Task<bool> SaveChangesAsync();
 
         // public abstract Task<T> GetByNombreAsync(string nombre);
