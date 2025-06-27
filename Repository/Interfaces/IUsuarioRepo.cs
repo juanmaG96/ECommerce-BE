@@ -8,12 +8,6 @@ namespace Ecommerce.Repository.Interfaces
 {
     public interface IUsuarioRepo
     {
-        void Add<Usuario>(Usuario usuario);
-        void Update<Usuario>(Usuario usuario);
-        void Delete<Usuario>(Usuario usuario);
-        Task<IEnumerable<Usuario>> GetAllAsync();
-        Task<Usuario> FindByIdAsync(int id);
-        Task<bool> SaveChangesAsync();
 
         // public abstract Task<T> GetByNombreAsync(string nombre);
 
@@ -23,9 +17,6 @@ namespace Ecommerce.Repository.Interfaces
         // tambien debemos modificar en StartUp en ConfigureServices agregando:
         // services.AddScoped<IRepository, UsuarioRepository>(); y tambien para los demas repo de cada clase
         // services.AddScoped<IProductoRepository, ProductoRepository>();
-
-
-
 
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Models;
 
 namespace Ecommerce.DTOs
 {
@@ -9,5 +10,7 @@ namespace Ecommerce.DTOs
     {
         public int Id { get; set; }
         public decimal Total { get; set; }
+        public List<ProductoDto> Productos { get; set; }
+
     }
 }

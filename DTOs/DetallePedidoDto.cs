@@ -11,5 +11,7 @@ namespace Ecommerce.DTOs
         public int IdPedido { get; set; }
         public int IdProducto { get; set; }
         public int Cantidad { get; set; }
+        public PedidoDto Pedido { get; set; }
+        public ProductoDto Producto { get; set; }
     }
 }

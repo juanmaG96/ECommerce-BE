@@ -8,45 +8,20 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repository
 {
-    public class ProductoRepository: IProductoRepo
+    public class ProductoRepository : Repository<Producto>, IRepository<Producto>, IProductoRepo
     {
-        private readonly AplicationDbContext _aplicationDbContext;
-
-        public ProductoRepository(AplicationDbContext aplicationDbContext)
+        public ProductoRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
-            _aplicationDbContext = aplicationDbContext;
         }
-
-        public void Add<Producto>(Producto producto)
+        public async Task<IEnumerable<Producto>> GetProductAsyncByName(string nombre)
         {
-            _aplicationDbContext.Add(producto);
-        }
-
-        public void Update<Producto>(Producto producto)
-        {
-            _aplicationDbContext.Update(producto);
-        }
-
-        public void Delete<Producto>(Producto producto)
-        {
-            _aplicationDbContext.Remove(producto);
-        }
-        public async Task<IEnumerable<Producto>> GetAllAsync()
-        {
-            var productos = await _aplicationDbContext.Producto.ToListAsync();
-            return productos;
-        }
-
-        public async Task<Producto> GetByIdAsync(int id)
-        {
-            var producto = await _aplicationDbContext.Producto.FirstOrDefaultAsync(u => u.Id == id);
-            return producto;
-        }
-
-        public async Task<bool> SaveChangesAsync()
-        {
-            // Guardar los cambios en la base de datos
-            return await _aplicationDbContext.SaveChangesAsync() > 0;
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new ArgumentException("El nombre del producto no puede ser nulo o vacío.", nameof(nombre));
+            }
+            return await Query()
+                .Where(p => p.Nombre.Contains(nombre, StringComparison.OrdinalIgnoreCase))
+                .ToListAsync();
         }
     }
 }

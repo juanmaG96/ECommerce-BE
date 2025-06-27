@@ -10,43 +10,11 @@ namespace Ecommerce.Repository
 {
     public class UsuarioRepository : IUsuarioRepo
     {
-        private readonly AplicationDbContext _aplicationDbContext;
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public UsuarioRepository(AplicationDbContext aplicationDbContext)
+        public UsuarioRepository(ApplicationDbContext applicationDbContext)
         {
-            _aplicationDbContext = aplicationDbContext;
-        }
-
-        public void Add<Usuario>(Usuario usuario)
-        {
-            _aplicationDbContext.Add(usuario);
-        }
-
-        public void Update<Usuario>(Usuario usuario)
-        {
-            _aplicationDbContext.Update(usuario);
-        }
-
-        public void Delete<Usuario>(Usuario usuario)
-        {
-            _aplicationDbContext.Remove(usuario);
-        }
-        public async Task<IEnumerable<Usuario>> GetAllAsync()
-        {
-            IEnumerable<Usuario> usuarios = await _aplicationDbContext.Usuario.ToListAsync();
-            return usuarios;
-        }
-
-        public async Task<Usuario> FindByIdAsync(int id)
-        {
-            var usuario = await _aplicationDbContext.Usuario.FindAsync(id);
-            return usuario;
-        }
-
-        public async Task<bool> SaveChangesAsync()
-        {
-            // Guardar los cambios en la base de datos
-            return await _aplicationDbContext.SaveChangesAsync() > 0;
+            _applicationDbContext = applicationDbContext;
         }
 
     }

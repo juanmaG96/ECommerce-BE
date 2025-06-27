@@ -2,9 +2,6 @@
 using Ecommerce.DTOs;
 using Ecommerce.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecommerce.Mapper
 {
@@ -16,7 +13,11 @@ namespace Ecommerce.Mapper
             CreateMap<ProductoDto, Producto>().ReverseMap();
             CreateMap<CarritoDto, Carrito>().ReverseMap();
             CreateMap<PedidoDto, Pedido>().ReverseMap();
-            CreateMap <DetallePedidoDto, DetallePedido>().ReverseMap();
+            CreateMap<DetallePedidoDto, DetallePedido>().ReverseMap();
+            CreateMap<CategoriaDto, Categoria>().ReverseMap();
+            CreateMap<ImagenDto, Imagen>().ReverseMap();
+            CreateMap<PagoDto, Pago>().ReverseMap();
+            CreateMap<TiendaDto, Tienda>().ReverseMap();
         }
     }
 }
