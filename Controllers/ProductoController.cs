@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Ecommerce.DTOs;
 using Ecommerce.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controllers
@@ -17,8 +18,8 @@ namespace Ecommerce.Controllers
             _prodService = prodService;
         }
 
-        [HttpGet("{nombre}")]
-        public async Task<IActionResult> GetByName(string nombre)
+        [HttpGet("{search}")]
+        public async Task<IActionResult> GetByName([FromQuery] string nombre)
         {
             try
             {
@@ -30,6 +31,7 @@ namespace Ecommerce.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -43,6 +45,7 @@ namespace Ecommerce.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -59,6 +62,8 @@ namespace Ecommerce.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] ProductoDto productoDto)
         {
@@ -72,6 +77,8 @@ namespace Ecommerce.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductoDto productoDto)
         {
@@ -85,7 +92,8 @@ namespace Ecommerce.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repository
 {
-    public class ProductoRepository : Repository<Producto>, IRepository<Producto>, IProductoRepo
+    public class ProductoRepository : Repository<Producto>, IProductoRepo
     {
         public ProductoRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
@@ -21,6 +21,9 @@ namespace Ecommerce.Repository
             }
             return await Query()
                 .Where(p => p.Nombre.Contains(nombre, StringComparison.OrdinalIgnoreCase))
+                .Include(p => p.Imagenes)
+                .Include(p => p.Categoria)
+                .Include(p => p.Tienda)
                 .ToListAsync();
         }
     }

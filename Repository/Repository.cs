@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecommerce.Repository.Interfaces;
@@ -68,9 +69,9 @@ namespace Ecommerce.Repository
             {
                 return await _context.SaveChangesAsync() > 0;
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is DbUpdateException || ex is DbException)
             {
-                throw new Exception("An error occurred while saving changes.", ex);
+                throw new Exception($"Error saving changes for entity {typeof(TEntity).Name}.", ex);
             }
         }
     }

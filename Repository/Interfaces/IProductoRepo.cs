@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repository.Interfaces
 {
-    public interface IProductoRepo
+    public interface IProductoRepo : IRepository<Producto>
     {
         Task<IEnumerable<Producto>> GetProductAsyncByName(string nombre);
     }

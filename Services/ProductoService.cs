@@ -14,13 +14,12 @@ namespace Ecommerce.Services
     {
         private readonly IMapper _mapper;
         private readonly IProductoRepo _productoRepo;
-        private readonly IRepository<Producto> _repository;
+        //private readonly IRepository<Producto> _repository;   // No es necesario si se usa IProductoRepo que hereda de IRepository
 
         public ProductoService(IMapper mapper, IProductoRepo productoRepo, IRepository<Producto> repository)
         {
             _mapper = mapper;
             _productoRepo = productoRepo;
-            _repository = repository;
         }
         public async Task<IEnumerable<ProductoDto>> GetProductAsyncByName(string nombre)
         {
@@ -32,49 +31,44 @@ namespace Ecommerce.Services
         }
         public async Task<IEnumerable<ProductoDto>> GetAllAsync()
         {
-            var productos = await _repository.GetAllAsync();
+            var productos = await _productoRepo.GetAllAsync();
             // Mapear los productos a DTOs
             var productosDto = _mapper.Map<IEnumerable<ProductoDto>>(productos);
             return productosDto;
         }
         public async Task<ProductoDto> GetByIdAsync(int id)
         {
-            var producto = await _repository.GetByIdAsync(id);
-            if (producto == null)
-            {
-                return null; // O lanzar una excepción
-            }
+            var producto = await _productoRepo.GetByIdAsync(id);
+            if (producto == null) throw new KeyNotFoundException($"Producto con ID {id} no encontrado.");
             var productoDto = _mapper.Map<ProductoDto>(producto);
             return productoDto;
         }
         public async Task<ProductoDto> AddAsync(ProductoDto productoDto)
         {
-            if (productoDto == null)
-            {
-                return null; // O lanzar una excepción
-            }
+            if (productoDto == null) throw new ArgumentNullException(nameof(productoDto));
             var producto = _mapper.Map<Producto>(productoDto);
-            var addProducto = await _repository.AddAsync(producto);
+            var addProducto = await _productoRepo.AddAsync(producto);
+            await _productoRepo.SaveChangesAsync();
             return _mapper.Map<ProductoDto>(addProducto);
         }
         public async Task<ProductoDto> UpdateAsync(ProductoDto productoDto)
         {
-            if (productoDto == null)
-            {
-                return null; // O lanzar una excepción
-            }
+            if (productoDto == null) throw new ArgumentNullException(nameof(productoDto));
             var producto = _mapper.Map<Producto>(productoDto);
-            var updatedProducto = await _repository.UpdateAsync(producto);
+            var updatedProducto = await _productoRepo.UpdateAsync(producto);
+            await _productoRepo.SaveChangesAsync();
             return _mapper.Map<ProductoDto>(updatedProducto);
         }
         public async Task DeleteAsync(ProductoDto productoDto)
         {
             var producto = _mapper.Map<Producto>(productoDto);
-            await _repository.DeleteAsync(producto);
+            await _productoRepo.DeleteAsync(producto);
+            await _productoRepo.SaveChangesAsync();
         }
         public async Task DeleteByIdAsync(int id)
         {
-            await _repository.DeleteByIdAsync(id);
+            await _productoRepo.DeleteByIdAsync(id);
+            await _productoRepo.SaveChangesAsync();
         }
     }
 }
