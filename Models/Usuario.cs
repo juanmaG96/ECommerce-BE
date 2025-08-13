@@ -17,7 +17,7 @@ namespace Ecommerce.Models
         [Required]
         public string CorreoElectronico { get; set; }
         public string PasswordHash { get; set; } // Cambiado de Contraseña a PasswordHash
-        public RolUsuario Rol { get; set; } // "Emprendedor", "Comprador", "Visitante"
+        public RolUsuario Rol { get; set; } // "Admin, Cliente"
         public DateTime FechaRegistro { get; set; } // Auditoría
         public DateTime? UltimoInicioSesion { get; set; } // Auditoría
         public virtual ICollection<Tienda> Tiendas { get; set; } // Relación con tiendas

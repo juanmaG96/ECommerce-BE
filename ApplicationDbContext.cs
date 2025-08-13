@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Pedido> Pedido { get; set; }
@@ -22,6 +22,13 @@ namespace Ecommerce
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>()
+            .HasIndex(u => u.CorreoElectronico)
+            .IsUnique();
         }
     }
 }

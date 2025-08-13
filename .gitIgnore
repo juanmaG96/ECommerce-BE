@@ -1,0 +1,39 @@
+# Compilados y dependencias
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# Configuración de usuario de Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Archivos de publicación
+publish/
+out/
+wwwroot/lib/
+
+# Archivos de entorno y configuración sensible
+appsettings.json
+appsettings.Development.json
+*.env
+
+# Archivos de seguridad y claves
+*.key
+*.pem
+*.pfx
+
+# Logs y dumps
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Sistema
+.DS_Store
+Thumbs.db

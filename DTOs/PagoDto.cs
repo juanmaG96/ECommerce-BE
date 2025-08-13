@@ -5,6 +5,7 @@ namespace Ecommerce.DTOs
 {
     public class PagoDto
     {
+        public int Id { get; set; }
         public int PedidoId { get; set; }
         public string MercadoPagoPaymentId { get; set; } // ID del pago en MercadoPago
         public decimal Monto { get; set; }

@@ -8,7 +8,9 @@ namespace Ecommerce.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime FechaPedido { get; set; }
+        public DateTime? FechaEnvioEstimado { get; set; }
+        public DateTime? FechaEnvioReal { get; set; }
         public string Estado { get; set; }
         public string DireccionEnvio { get; set; } // Ejemplo: "Calle Falsa 123, Ciudad, Provincia"
         public string Notas { get; set; } // Notas adicionales del pedido
